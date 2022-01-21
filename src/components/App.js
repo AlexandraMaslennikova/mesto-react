@@ -20,9 +20,9 @@ function App() {
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState({});
   //данные пользователя
-  const [userName, setUserName] = useState();
-  const [userDescription, setUserDescription] = useState();
-  const [userAvatar, setUserAvatar] = useState();
+  const [userName, setUserName] = useState('');
+  const [userDescription, setUserDescription] = useState('');
+  const [userAvatar, setUserAvatar] = useState('');
   
 
   //получение данных о пользователе
@@ -74,7 +74,7 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
-    setSelectedCard(false)
+    setSelectedCard({})
   }
 
 
@@ -90,7 +90,8 @@ function App() {
           onAddPlace={handleAddPlaceClick} 
           onEditAvatar={handleEditAvatarClick}
           onCardClick={handleCardClick}
-          cards={cards}/>
+          cards={cards}
+        />
         <Footer />
 
         <PopupWithForm 
@@ -98,15 +99,17 @@ function App() {
           title='Обновить аватар' 
           buttonName='Сохранить' 
           isOpen={isEditAvatarPopupOpen}
-          onClose={closeAllPopups}>
+          onClose={closeAllPopups}
+        >
           <form className="popup__form" name="form" /*novalidate*/>
             <input 
-            className="popup__input popup__input_type_avatar"
-            id="avatar"
-            type="url"
-            placeholder="Введите ссылку на аватар"
-            name="avatar"
-            required/>
+              className="popup__input popup__input_type_avatar"
+              id="avatar"
+              type="url"
+              placeholder="Введите ссылку на аватар"
+              name="avatar"
+              required
+            />
             <span id="avatar-error" className="error"></span>
           </form>
         </PopupWithForm>
@@ -116,27 +119,30 @@ function App() {
           title='Редактировать профиль' 
           buttonName='Сохранить' 
           isOpen={isEditProfilePopupOpen}
-          onClose={closeAllPopups}>
+          onClose={closeAllPopups}
+        >
           <form className="popup__form" name="form" /*novalidate*/>
             <input 
-            className="popup__input popup__input_type_name"
-            id="user-name"
-            type="text" 
-            placeholder="Имя" 
-            name="name"
-            // minlength="2"
-            //maxlength="40"
-            required/>
+              className="popup__input popup__input_type_name"
+              id="user-name"
+              type="text" 
+              placeholder="Имя" 
+              name="name"
+              // minlength="2"
+              //maxlength="40"
+              required
+            />
             <span id="user-name-error" className="error"></span>
             <input 
-            className="popup__input popup__input_type_job"
-            id="about"
-            type="text"
-            placeholder="Профессия"
-            name="about"
-            //minlength="2"
-            //maxlength="200"
-            required/>
+              className="popup__input popup__input_type_job"
+              id="about"
+              type="text"
+              placeholder="Профессия"
+              name="about"
+              //minlength="2"
+              //maxlength="200"
+              required
+            />
             <span id="about-error" className="error"></span>
           </form>
         </PopupWithForm>
@@ -145,25 +151,28 @@ function App() {
           title='Новое место' 
           buttonName='Создать' 
           isOpen={isAddPlacePopupOpen}
-          onClose={closeAllPopups}> 
+          onClose={closeAllPopups}
+        > 
           <form className="popup__form" name="placeForm" /*novalidate*/>
             <input
-            className="popup__input popup__input_type_place"
-            id="name"
-            type="text"
-            placeholder="Название"
-            name="name"
-            //minlength="2"
-            //maxlength="30"
-            required/>
+              className="popup__input popup__input_type_place"
+              id="name"
+              type="text"
+              placeholder="Название"
+              name="name"
+              //minlength="2"
+              //maxlength="30"
+              required
+            />
             <span id="name-error" className="error"></span>
             <input
-            className="popup__input popup__input_type_link"
-            id="link"
-            type="url"
-            placeholder="Ссылка на картинку"
-            name="link"
-            required/>
+              className="popup__input popup__input_type_link"
+              id="link"
+              type="url"
+              placeholder="Ссылка на картинку"
+              name="link"
+              required
+            />
             <span id="link-error" className="error"></span>
           </form>
         </PopupWithForm>
@@ -171,10 +180,12 @@ function App() {
         <PopupWithForm 
           name='confirm' 
           title='Вы уверены' 
-          buttonName='Да'/>
+          buttonName='Да'
+        />
         <ImagePopup
           onClose={closeAllPopups}
-          card={selectedCard}/>
+          card={selectedCard}
+        />
       </div>
     </div>
   );
