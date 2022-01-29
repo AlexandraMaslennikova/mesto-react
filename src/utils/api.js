@@ -30,13 +30,13 @@ class Api {
     }
   
     //редактирование информации о пользователе
-    editUserInformation(name, about) {
+    editUserInformation(user) {
       return fetch(`${this._baseUrl}/users/me`, {
         method: "PATCH",
         headers: this._headers,
         body: JSON.stringify({
-          name: name,
-          about: about
+          name: user.name,
+          about: user.about
         })
       })
       .then(this._checkResponse);
@@ -56,18 +56,9 @@ class Api {
     }
 
     //лайк карточки
-    putLike(cardId) {
+    changeLikeCardStatus(cardId, isLiked) {
       return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-        method: "PUT",
-        headers: this._headers
-    })
-    .then(this._checkResponse);
-    }
-
-    //удаление лайка
-    deleteLike(cardId) {
-      return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-        method: "DELETE",
+        method: isLiked ? 'DELETE' : 'PUT',
         headers: this._headers
     })
     .then(this._checkResponse);
@@ -88,7 +79,7 @@ class Api {
         method: "PATCH",
         headers: this._headers,
         body: JSON.stringify({
-          avatar: avatarLink
+          avatar: avatarLink.avatar,
         })
       })
     .then(this._checkResponse);
