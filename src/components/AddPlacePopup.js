@@ -31,6 +31,7 @@ function AddPlacePopup(props) {
                 type="text"
                 placeholder="Название"
                 name="name"
+                maxLength={30}
                 ref={placeNameRef}
                 required
             />

@@ -53,6 +53,7 @@ function EditProfilePopup(props) {
           placeholder="Имя" 
           name="name"
           value={name || ''}
+          maxLength={40}
           onChange={handleChangeName}
           required
         />
